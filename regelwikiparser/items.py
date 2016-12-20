@@ -7,9 +7,11 @@
 
 from scrapy.item import Item, Field
 
+
 class SpellClassItem(Item):
     spellclass = Field()
     spells = Field()
+
 
 class SpellItem(Item):
     spellclass = Field()
