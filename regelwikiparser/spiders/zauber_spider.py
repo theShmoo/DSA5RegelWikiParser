@@ -33,10 +33,11 @@ class Magic(CrawlSpider):
             "Zielkategorie",
             "Merkmal",
             "Verbreitung",
-            "Steigerungsfaktor"
+            "Steigerungsfaktor",
+            "Anmerkung"
         ]
 
-        name_query = "//*/div/h1/text()"
+        name_query = "//div/h1/text()"
         selector = response.xpath(name_query)
         name = selector.extract_first()
         item['name'] = name
@@ -54,10 +55,12 @@ class Magic(CrawlSpider):
             print(short_url)
 
         for p in properties:
-            p_query = "//*/p/strong[text() = '" + p + \
-                ":']/following-sibling::text()[1]"
+            p_query = "//p/strong[contains(.,'" + p + \
+                "')]/following-sibling::text()[1]"
             selector = response.xpath(p_query)
             s = selector.extract()
             if s:
+                if p == "Anmerkung":
+                    p = "Verbreitung"
                 item['properties'][p] = s[0].lstrip()
         return item
