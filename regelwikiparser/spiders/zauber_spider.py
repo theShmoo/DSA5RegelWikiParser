@@ -78,10 +78,7 @@ class Magic(CrawlSpider):
         content_selector = response.xpath(extension_content_query)
         titles = title_selector.extract()
         contents = content_selector.extract()
-        print("\nEXTENSIONS:")
-        print(titles)
-        print(contents)
         if len(titles) >= 2 and len(contents) >= 2:
             for i in range(0, 3):
-                item['spellextensions'][i] = (titles[i][2:], contents[i])
+                item['spellextensions'][i] = (titles[i][1:], contents[i])
         return item
