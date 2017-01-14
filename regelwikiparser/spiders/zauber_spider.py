@@ -57,9 +57,9 @@ class Magic(CrawlSpider):
 
         # parse the properties
         item['properties'] = {}
+        query = "//div[contains(@class, 'ce_text')]//strong[contains(.,'"
         for p in properties:
-            p_query = "//p/strong[contains(.,'" + p + \
-                "')]/following-sibling::text()[1]"
+            p_query = query + p + "')]/following-sibling::text()[1]"
             selector = response.xpath(p_query)
             s = selector.extract()
             if s:
