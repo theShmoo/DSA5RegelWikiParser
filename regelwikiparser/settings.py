@@ -16,6 +16,8 @@ NEWSPIDER_MODULE = 'regelwikiparser.spiders'
 
 ITEM_PIPELINES = {'regelwikiparser.pipelines.JsonWithEncodingPipeline': 300}
 
+LOG_FILE = 'log.txt'
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'regelwikiparser (+http://www.yourdomain.com)'
 

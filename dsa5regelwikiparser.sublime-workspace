@@ -11,6 +11,24 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "regelwikiparser/spiders/zauber_spider.py",
+			"settings":
+			{
+				"buffer_size": 4466,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "regelwikiparser/items.py",
+			"settings":
+			{
+				"buffer_size": 331,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/Python/Python.sublime-build",
 	"build_system_choices":
@@ -36,7 +54,7 @@
 	"command_palette":
 	{
 		"height": 363.0,
-		"last_filter": "snippet",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -110,8 +128,17 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/E/Dropbox/Projekte/DSA5RegelWikiParser",
+		"/E/Dropbox/Projekte/DSA5RegelWikiParser/regelwikiparser",
+		"/E/Dropbox/Projekte/DSA5RegelWikiParser/regelwikiparser/spiders"
+	],
 	"file_history":
 	[
+		"/E/Dropbox/Projekte/DSA5RegelWikiParser/file.json",
+		"/E/Dropbox/Projekte/DSA5RegelWikiParser/magic.json",
+		"/E/Dropbox/Projekte/DSA5RegelWikiParser/scraped_data_utf8.json",
 		"/E/Dropbox/Uni/Masterstudium Visual Computing/Mustererknennung - Vertiefend/StrPR/StrPr_CombPyr_ImageSeg/src/python/direction.py",
 		"/E/Dropbox/Uni/Masterstudium Visual Computing/Mustererknennung - Vertiefend/StrPR/StrPr_CombPyr_ImageSeg/src/python/node.py",
 		"/E/Dropbox/Uni/Masterstudium Visual Computing/Mustererknennung - Vertiefend/StrPR/StrPr_CombPyr_ImageSeg/src/python/dart.py",
@@ -146,7 +173,7 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 33.0
 	},
 	"find_in_files":
 	{
@@ -161,6 +188,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"append",
+			"parse_spell",
+			"SpellClassItem",
+			"extension_title_",
 			"invariant",
 			"Node",
 			"getNode",
@@ -220,8 +251,78 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "regelwikiparser/spiders/zauber_spider.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4466,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2669,
+								2669
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 799.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "regelwikiparser/items.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 331,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								189,
+								189
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -258,7 +359,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 1148.0
+		"height": 251.0
 	},
 	"output.find_results":
 	{
