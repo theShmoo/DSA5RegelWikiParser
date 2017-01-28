@@ -8,7 +8,11 @@ import logging
 
 class Magic(CrawlSpider):
     name = "magic"
-    start_urls = ["http://www.ulisses-regelwiki.de/index.php/zauber.html"]
+    start_urls = [
+        "http://www.ulisses-regelwiki.de/index.php/zauber.html",
+        "http://www.ulisses-regelwiki.de/index.php/HSF_Hexenflueche.html",
+        "http://www.ulisses-regelwiki.de/index.php/SSF_Stabzauber.html",
+        "http://www.ulisses-regelwiki.de/index.php/ESF_Elfenlieder.html"]
     allowed_domains = ["ulisses-regelwiki.de"]
     rules = (
         Rule(LinkExtractor(allow=('za_rituale\.html',
@@ -17,7 +21,12 @@ class Magic(CrawlSpider):
         Rule(LinkExtractor(allow=('Rit_.*\.html')), callback='parseSpell'),
         Rule(LinkExtractor(allow=('ZT_.*\.html')), callback='parseSpell'),
         Rule(LinkExtractor(allow=('ZS_.*\.html')), callback='parseSpell'),
-        Rule(LinkExtractor(allow=('SZ_.*\.html')), callback='parseSpell')
+        Rule(LinkExtractor(allow=('SZ_.*\.html')), callback='parseSpell'),
+        Rule(LinkExtractor(allow=('HSF_.*\.html')), callback='parseSpell'),
+        Rule(LinkExtractor(allow=('1178\.html')), callback='parseSpell'),
+        Rule(LinkExtractor(allow=('SSF_.*\.html')), callback='parseSpell'),
+        Rule(LinkExtractor(allow=('SF_.*\.html')), callback='parseSpell'),
+        Rule(LinkExtractor(allow=('ESF_\.html')), callback='parseSpell'),
     )
 
     def concatSelector(self, selector):
@@ -35,13 +44,19 @@ class Magic(CrawlSpider):
 
     def parseSpellClass(self, response):
         short_url = response.url.rsplit('/', 1)[-1]
-
+        logging.log(logging.INFO, short_url)
         if short_url.startswith('Rit_'):
             spell_class = 'Ritual'
         elif short_url.startswith('ZT_'):
             spell_class = 'Zaubertrick'
         elif short_url.startswith('ZS_') or short_url.startswith('SZ_'):
             spell_class = 'Zauberspruch'
+        elif short_url.startswith('HSF_') or short_url.startswith('1178'):
+            spell_class = 'Hexenfluch'
+        elif short_url.startswith('SF_') or short_url.startswith('SSF_'):
+            spell_class = 'Stabzauber'
+        elif short_url.startswith('ESF_'):
+            spell_class = 'Elfenlied'
         else:
             spell_class = 'Zauberspruch'
             logging.log(logging.WARNING, "Spell Class not found!")
