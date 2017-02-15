@@ -1,33 +1,46 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from scrapy.spiders import CrawlSpider, Rule
-from scrapy.linkextractors import LinkExtractor
+from scrapy.spiders import Spider
+from scrapy.selector import Selector
+from scrapy.http import Request
 from regelwikiparser.items import SpellItem
 import logging
 
 
-class Magic(CrawlSpider):
+class Magic(Spider):
     name = "magic"
-    start_urls = [
-        "http://www.ulisses-regelwiki.de/index.php/zauber.html",
-        "http://www.ulisses-regelwiki.de/index.php/HSF_Hexenflueche.html",
-        "http://www.ulisses-regelwiki.de/index.php/SSF_Stabzauber.html",
-        "http://www.ulisses-regelwiki.de/index.php/ESF_Elfenlieder.html"]
     allowed_domains = ["ulisses-regelwiki.de"]
-    rules = (
-        Rule(LinkExtractor(allow=('za_rituale\.html',
-                                  'za_zaubersprueche\.html',
-                                  'Zauber_Zaubertricks\.html'))),
-        Rule(LinkExtractor(allow=('Rit_.*\.html')), callback='parseSpell'),
-        Rule(LinkExtractor(allow=('ZT_.*\.html')), callback='parseSpell'),
-        Rule(LinkExtractor(allow=('ZS_.*\.html')), callback='parseSpell'),
-        Rule(LinkExtractor(allow=('SZ_.*\.html')), callback='parseSpell'),
-        Rule(LinkExtractor(allow=('HSF_.*\.html')), callback='parseSpell'),
-        Rule(LinkExtractor(allow=('1178\.html')), callback='parseSpell'),
-        Rule(LinkExtractor(allow=('SSF_.*\.html')), callback='parseSpell'),
-        Rule(LinkExtractor(allow=('SF_.*\.html')), callback='parseSpell'),
-        Rule(LinkExtractor(allow=('ESF_\.html')), callback='parseSpell'),
-    )
+    base_url = "http://www.ulisses-regelwiki.de/index.php/"
+
+    def start_requests(self):
+
+        d = {
+            "Flüche": "HSF_Hexenflueche.html",
+            "Stabzauber": "SSF_Stabzauber.html",
+            "Rituale": "za_rituale.html",
+            "Zaubersprüche": "za_zaubersprueche.html",
+            "Zaubertricks": "Zauber_Zaubertricks.html",
+            "Elfenlieder": "ESF_Elfenlieder.html",
+            "Ahnenzeichen": "Ahnenzeichen.html"
+        }
+
+        for key, link in d.iteritems():
+            request = Request(self.base_url + link,
+                              callback=self.parseNavItems)
+            request.meta['type'] = key
+            yield request
+
+    def parseNavItems(self, response):
+        xpath_mod_nav = "//*[@id='sub_header']//" + \
+            "nav[contains(@class,'mod_navigation')]//" + \
+            "a[@class='ulSubMenu']/@href"
+        hxs = Selector(response=response, type="html")
+        sites = hxs.xpath(xpath_mod_nav)
+        for site in sites:
+            url = self.base_url + site.extract()
+            request = Request(url, callback=self.parseSpell)
+            request.meta['type'] = response.meta['type']
+            yield request
 
     def concatSelector(self, selector):
         s = ""
@@ -42,26 +55,11 @@ class Magic(CrawlSpider):
                 s += content[0].lstrip()
         return s
 
-    def parseSpellClass(self, response):
-        short_url = response.url.rsplit('/', 1)[-1]
-        logging.log(logging.INFO, short_url)
-        if short_url.startswith('Rit_'):
-            spell_class = 'Ritual'
-        elif short_url.startswith('ZT_'):
-            spell_class = 'Zaubertrick'
-        elif short_url.startswith('ZS_') or short_url.startswith('SZ_'):
-            spell_class = 'Zauberspruch'
-        elif short_url.startswith('HSF_') or short_url.startswith('1178'):
-            spell_class = 'Hexenfluch'
-        elif short_url.startswith('SF_') or short_url.startswith('SSF_'):
-            spell_class = 'Stabzauber'
-        elif short_url.startswith('ESF_'):
-            spell_class = 'Elfenlied'
+    def parseSpellClass(self, spell_class):
+        if spell_class:
+            return spell_class
         else:
-            spell_class = 'Zauberspruch'
             logging.log(logging.WARNING, "Spell Class not found!")
-
-        return spell_class
 
     def parseProperties(self, selector, spell_class):
         properties = [
@@ -74,7 +72,10 @@ class Magic(CrawlSpider):
             "Zielkategorie",
             "Merkmal",
             "Verbreitung",
-            "Steigerungsfaktor"
+            "Steigerungsfaktor",
+            "AP-Wert",
+            "Volumen",
+            "Voraussetzungen"
         ]
 
         spell_properties = {}
@@ -139,7 +140,7 @@ class Magic(CrawlSpider):
         item['link'] = response.url
 
         # parse for spell class
-        spell_class = self.parseSpellClass(response)
+        spell_class = self.parseSpellClass(response.meta['type'])
         item['spellclass'] = spell_class
 
         # parse for the properties
