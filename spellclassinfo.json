@@ -1,0 +1,158 @@
+{
+  "Fluch": {
+    "link": "HSF_Hexenflueche.html",
+    "properties": [
+      "Wirkung",
+      "Voraussetzungen",
+      "Volumen",
+      "AsP-Kosten",
+      "Merkmal",
+      "AP-Wert"
+    ],
+    "extension": 0,
+    "active": 0
+  },
+  "Stabzauber": {
+    "link": "SSF_Stabzauber.html",
+    "properties": [
+      "Wirkung",
+      "Voraussetzungen",
+      "Volumen",
+      "AsP-Kosten",
+      "Merkmal",
+      "AP-Wert"
+    ],
+    "extension": 0,
+    "active": 1
+  },
+  "Ritual": {
+    "link": "za_rituale.html",
+    "properties": [
+      "Wirkung",
+      "Voraussetzungen",
+      "Volumen",
+      "AsP-Kosten",
+      "Merkmal",
+      "AP-Wert"
+    ],
+    "extension": 0,
+    "active": 0
+  },
+  "Zauberspruch": {
+    "link": "za_zaubersprueche.html",
+    "properties": [
+      "Wirkung",
+      "Voraussetzungen",
+      "Volumen",
+      "AsP-Kosten",
+      "Merkmal",
+      "AP-Wert"
+    ],
+    "extension": 0,
+    "active": 0
+  },
+  "Zaubertrick": {
+    "link": "Zauber_Zaubertricks.html",
+    "properties": [
+      "Wirkung",
+      "Voraussetzungen",
+      "Volumen",
+      "AsP-Kosten",
+      "Merkmal",
+      "AP-Wert"
+    ],
+    "extension": 0,
+    "active": 0
+  },
+  "Elfenlied": {
+    "link": "ESF_Elfenlieder.html",
+    "properties": [
+      "Wirkung",
+      "Voraussetzungen",
+      "Volumen",
+      "AsP-Kosten",
+      "Merkmal",
+      "AP-Wert"
+    ],
+    "extension": 0,
+    "active": 0
+  },
+  "Ahnenzeichen": {
+    "link": "Ahnenzeichen.html",
+    "properties": [
+      "Wirkung",
+      "Voraussetzungen",
+      "Volumen",
+      "AsP-Kosten",
+      "Merkmal",
+      "AP-Wert"
+    ],
+    "extension": 0,
+    "active": 0
+  },
+  "Dolchritual": {
+    "link": "drituale.html",
+    "properties": [
+      "Wirkung",
+      "Voraussetzungen",
+      "Volumen",
+      "AsP-Kosten",
+      "Merkmal",
+      "AP-Wert"
+    ],
+    "extension": 0,
+    "active": 0
+  },
+  "Vertrautentrick": {
+    "link": "VSF_Vertrautentricks.html",
+    "properties": [
+      "Wirkung",
+         "Voraussetzungen",
+         "Volumen",
+         "AsP-Kosten",
+         "Merkmal",
+         "AP-Wert"
+       ],
+    "extension": 0,
+    "active": 0
+  },
+  "Verzerrtes Elfenlied": {
+    "link": "verelfenl.html",
+    "properties": [
+      "Wirkung",
+        "Voraussetzungen",
+        "Volumen",
+        "AsP-Kosten",
+        "Merkmal",
+        "AP-Wert"
+      ],
+      "extension": 0,
+      "active": 0
+    },
+  "Bann und Schutzkreis": {
+    "link": "bannundschutz.html",
+    "properties": [
+      "Wirkung",
+        "Voraussetzungen",
+        "Volumen",
+        "AsP-Kosten",
+        "Merkmal",
+        "AP-Wert"
+      ],
+      "extension": 0,
+      "active": 0
+    },
+  "Herrschaftsritual": {
+    "link": "herituel.html",
+    "properties": [
+      "Wirkung",
+     "Voraussetzungen",
+     "Volumen",
+     "AsP-Kosten",
+     "Merkmal",
+     "AP-Wert"
+   ],
+    "extension": 0,
+    "active": 0
+  }
+}
