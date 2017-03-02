@@ -2,15 +2,16 @@
   "Fluch": {
     "link": "HSF_Hexenflueche.html",
     "properties": [
+      "Probe",
       "Wirkung",
-      "Voraussetzungen",
-      "Volumen",
       "AsP-Kosten",
-      "Merkmal",
-      "AP-Wert"
+      "Wirkungsdauer",
+      "Merkmal"
     ],
     "extension": 0,
-    "active": 0
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": "Hexen"
   },
   "Stabzauber": {
     "link": "SSF_Stabzauber.html",
@@ -23,72 +24,87 @@
       "AP-Wert"
     ],
     "extension": 0,
-    "active": 1
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": "Gildenmagier"
   },
   "Ritual": {
     "link": "za_rituale.html",
     "properties": [
+      "Probe",
       "Wirkung",
-      "Voraussetzungen",
-      "Volumen",
+      "Ritualdauer",
       "AsP-Kosten",
+      "Reichweite",
+      "Wirkungsdauer",
+      "Zielkategorie",
       "Merkmal",
-      "AP-Wert"
+      "Verbreitung",
+      "Steigerungsfaktor"
     ],
-    "extension": 0,
-    "active": 0
+    "extension": 1,
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": null
   },
   "Zauberspruch": {
     "link": "za_zaubersprueche.html",
     "properties": [
+      "Probe",
       "Wirkung",
-      "Voraussetzungen",
-      "Volumen",
+      "Zauberdauer",
       "AsP-Kosten",
+      "Reichweite",
+      "Wirkungsdauer",
+      "Zielkategorie",
       "Merkmal",
-      "AP-Wert"
+      "Verbreitung",
+      "Steigerungsfaktor"
     ],
-    "extension": 0,
-    "active": 0
+    "extension": 1,
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": null
   },
   "Zaubertrick": {
     "link": "Zauber_Zaubertricks.html",
     "properties": [
-      "Wirkung",
-      "Voraussetzungen",
-      "Volumen",
-      "AsP-Kosten",
+      "Reichweite",
+      "Wirkungsdauer",
+      "Zielkategorie",
       "Merkmal",
-      "AP-Wert"
+      "Anmerkung"
     ],
     "extension": 0,
-    "active": 0
+    "active": 1,
+    "pre-text": 1,
+    "default-verbreitung": null
   },
   "Elfenlied": {
     "link": "ESF_Elfenlieder.html",
     "properties": [
+      "Probe",
       "Wirkung",
-      "Voraussetzungen",
-      "Volumen",
+      "Talent",
       "AsP-Kosten",
       "Merkmal",
-      "AP-Wert"
+      "Steigerungsfaktor"
     ],
     "extension": 0,
-    "active": 0
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": "Elfen"
   },
   "Ahnenzeichen": {
     "link": "Ahnenzeichen.html",
     "properties": [
-      "Wirkung",
-      "Voraussetzungen",
-      "Volumen",
       "AsP-Kosten",
-      "Merkmal",
       "AP-Wert"
     ],
     "extension": 0,
-    "active": 0
+    "active": 1,
+    "pre-text": 1,
+    "default-verbreitung": null
   },
   "Dolchritual": {
     "link": "drituale.html",
@@ -101,58 +117,65 @@
       "AP-Wert"
     ],
     "extension": 0,
-    "active": 0
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": "Druiden"
   },
   "Vertrautentrick": {
     "link": "VSF_Vertrautentricks.html",
     "properties": [
+      "Tierarten",
       "Wirkung",
-         "Voraussetzungen",
-         "Volumen",
-         "AsP-Kosten",
-         "Merkmal",
-         "AP-Wert"
-       ],
+      "AsP-Kosten",
+      "Merkmal",
+      "AP-Wert",
+      "Wirkungsdauer"
+    ],
     "extension": 0,
-    "active": 0
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": "Hexen"
   },
   "Verzerrtes Elfenlied": {
     "link": "verelfenl.html",
     "properties": [
+      "Probe",
       "Wirkung",
-        "Voraussetzungen",
-        "Volumen",
-        "AsP-Kosten",
-        "Merkmal",
-        "AP-Wert"
-      ],
-      "extension": 0,
-      "active": 0
-    },
+      "Talent",
+      "AsP-Kosten",
+      "Merkmal",
+      "Steigerungsfaktor"
+    ],
+    "extension": 0,
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": "Elfen"
+  },
   "Bann und Schutzkreis": {
     "link": "bannundschutz.html",
     "properties": [
-      "Wirkung",
-        "Voraussetzungen",
-        "Volumen",
-        "AsP-Kosten",
-        "Merkmal",
-        "AP-Wert"
-      ],
-      "extension": 0,
-      "active": 0
-    },
+      "AsP-Kosten",
+      "Schutzkreis",
+      "Bannkreis",
+      "Merkmal"
+    ],
+    "extension": 0,
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": "Gildenmagier"
+  },
   "Herrschaftsritual": {
     "link": "herituel.html",
     "properties": [
+      "Probe",
       "Wirkung",
-     "Voraussetzungen",
-     "Volumen",
-     "AsP-Kosten",
-     "Merkmal",
-     "AP-Wert"
+      "Wirkungsdauer",
+      "AsP-Kosten",
+      "Merkmal"
    ],
     "extension": 0,
-    "active": 0
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": "Druiden"
   }
 }
