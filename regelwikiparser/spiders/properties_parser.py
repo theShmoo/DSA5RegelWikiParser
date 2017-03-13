@@ -56,7 +56,8 @@ class PropertiesParser(object):
 
     def filterProp(self, prop):
         prop_operations = [
-            r"((<p>)?\s*((</?p>)|(</?br>)))+"
+            r"^((<p>)?\s*((</?p>)|(</?br>)))+",
+            r"((<p>)?\s*((</?p>)|(</?br>)))+$"
         ]
         for rx in prop_operations:
             prop = re.sub(rx, "", prop, 0, re.U)
@@ -113,6 +114,7 @@ class PropertiesParser(object):
         if default:
             item["properties"]["Verbreitung"] = default
 
+        # Verbreitung default cases
         if self.spell_class == "Zaubertrick":
             if "Anmerkung" in item["properties"]:
                 item["properties"]["Verbreitung"] = item[
@@ -121,6 +123,10 @@ class PropertiesParser(object):
 
         if "Verbreitung" not in item["properties"]:
             item["properties"]["Verbreitung"] = "Allgemein"
+
+        # Merkmal default cases
+        if "Merkmal" not in item["properties"]:
+            item["properties"]["Merkmal"] = "Keines"
 
     def parseSpellExtensions(self, selector, item):
         """parse the spell extensions of a spell and returns it as a dict"""
