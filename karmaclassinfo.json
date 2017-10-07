@@ -1,0 +1,54 @@
+{
+  "Liturgie": {
+    "link": "lt_liturgien.html",
+    "properties": [
+      "Probe",
+      "Wirkung",
+      "Liturgiedauer",
+      "KaP-Kosten",
+      "Reichweite",
+      "Wirkungsdauer",
+      "Zielkategorie",
+      "Verbreitung",
+      "Aspekt",
+      "Steigerungsfaktor"
+    ],
+    "extension": 1,
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": null
+  },
+  "Segnung": {
+    "link": "Lit_Segnungen.html",
+    "properties": [
+      "Reichweite",
+      "Wirkungsdauer",
+      "Zielkategorie",
+      "Verbreitung",
+      "Aspekt"
+    ],
+    "extension": 0,
+    "active": 1,
+    "pre-text": 1,
+    "default-verbreitung": null
+  },
+  "Zeremonie": {
+    "link": "lt_zeremonien.html",
+    "properties": [
+      "Probe",
+      "Wirkung",
+      "Zeremoniedauer",
+      "KaP-Kosten",
+      "Reichweite",
+      "Wirkungsdauer",
+      "Zielkategorie",
+      "Verbreitung",
+      "Aspekt",
+      "Steigerungsfaktor"
+    ],
+    "extension": 1,
+    "active": 1,
+    "pre-text": 0,
+    "default-verbreitung": null
+  }
+}

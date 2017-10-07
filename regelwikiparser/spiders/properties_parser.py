@@ -6,9 +6,9 @@ class PropertiesParser(object):
 
     """docstring for PropertiesParser"""
 
-    def __init__(self, spell_info, spell_class):
+    def __init__(self, info, spell_class):
         super(PropertiesParser, self).__init__()
-        self.spell_info = spell_info
+        self.info = info
         self.spell_class = spell_class
 
     def filterPropertiesText(self, text, prop_rx):
@@ -64,7 +64,7 @@ class PropertiesParser(object):
         return prop
 
     def parseByText(self, selector, item):
-        props = self.spell_info["properties"]
+        props = self.info["properties"]
         spell_properties = {}
 
         # create a or regex of all properties
@@ -96,7 +96,7 @@ class PropertiesParser(object):
                 # save the next description as its descritpion
                 spell_properties[elem] = self.filterProp(found_descr[idx + 1])
 
-        if self.spell_info['pre-text'] is 1:
+        if self.info['pre-text'] is 1:
             if first_found > 0:
                 descr = self.filterProp(found_descr[first_found - 1])
                 spell_properties['Wirkung'] = descr
@@ -110,7 +110,7 @@ class PropertiesParser(object):
 
         self.parseByText(selector, item)
 
-        default = self.spell_info["default-verbreitung"]
+        default = self.info["default-verbreitung"]
         if default:
             item["properties"]["Verbreitung"] = default
 
@@ -128,12 +128,33 @@ class PropertiesParser(object):
         if "Merkmal" not in item["properties"]:
             item["properties"]["Merkmal"] = "Keines"
 
+    def parseKarmaExtensions(self, selector, item):
+        """parse the karma extensions of a liturgy and returns it as a dict"""
+
+        karma_extensions = {}
+
+        if self.info['extension'] is 1:
+            extension_content_query = ".//em[contains(.,'#')]/" + \
+                "following-sibling::text()[1]"
+            extension_title_query = ".//em/text()[contains(.,'#')]"
+            title_selector = selector.xpath(extension_title_query)
+            content_selector = selector.xpath(extension_content_query)
+            titles = title_selector.extract()
+            contents = content_selector.extract()
+            if len(titles) >= 2 and len(contents) >= 2:
+                for i in range(0, 3):
+                    karma_extensions[i] = (titles[i][1:], contents[i])
+            else:
+                logging.warning("No Spell extensions found!")
+
+        item['karmaextensions'] = karma_extensions
+
     def parseSpellExtensions(self, selector, item):
         """parse the spell extensions of a spell and returns it as a dict"""
 
         spell_extensions = {}
 
-        if self.spell_info['extension'] is 1:
+        if self.info['extension'] is 1:
             extension_content_query = ".//em[contains(.,'#')]/" + \
                 "following-sibling::text()[1]"
             extension_title_query = ".//em/text()[contains(.,'#')]"

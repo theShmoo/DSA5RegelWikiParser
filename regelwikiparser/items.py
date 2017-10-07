@@ -14,3 +14,10 @@ class SpellItem(Item):
     link = Field()
     properties = Field()
     spellextensions = Field()
+
+class KarmaItem(Item):
+    karmaclass = Field()
+    name = Field()
+    link = Field()
+    properties = Field()
+    karmaextensions = Field()
